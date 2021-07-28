@@ -60,42 +60,42 @@
   ```javascript
   // Good
   class Form {
-	    @autobind
-	    collectAndSubmitData() {
-	      let data = {
-	        name: this.state.name,
-	        age: this.state.age,
-	      }
-	      this.props.onSubmit(data);
-	    }
-	
-	    @autobind
-	    syncName() {
-	      // ...
-	    }
-	
-	    @autobind
-	    syncAge() {
-	      // ...
-	    }
-	
-	    render() {
-	      return (
-	        <div>
-	          <label>
-	            姓名：
-	            <input type="text" onChange={this.syncName} />
-	          </label>
-	          <label>
-	            年龄：
-	            <input type="number" onChange={this.syncAge} />
-	          </label>
-	          <button type="button" onClick={this.collectAndSubmit}>
-	            提交
-	          </button>
-	        </div>
-	      );
-	    }
+    @autobind
+    collectAndSubmitData() {
+        let data = {
+        name: this.state.name,
+        age: this.state.age,
+        }
+        this.props.onSubmit(data);
+    }
+
+    @autobind
+    syncName() {
+        // ...
+    }
+
+    @autobind
+    syncAge() {
+        // ...
+    }
+
+    render() {
+        return (
+        <div>
+            <label>
+            姓名：
+            <input type="text" onChange={this.syncName} />
+            </label>
+            <label>
+            年龄：
+            <input type="number" onChange={this.syncAge} />
+            </label>
+            <button type="button" onClick={this.collectAndSubmit}>
+            提交
+            </button>
+        </div>
+        );
+    }
   }
   ```
 
@@ -108,16 +108,16 @@
   ```javascript
   // Bad
   let Message = React.createClass({
-	    render() {
-	      return <span>{this.state.message}</span>;
-	    }
+    render() {
+        return <span>{this.state.message}</span>;
+    }
   })
 
   // Good
   class Message extends PureComponent {
-	    render() {
-	      return <span>{this.state.message}</span>;
-	    }
+    render() {
+        return <span>{this.state.message}</span>;
+    }
   }
   ```
 
@@ -194,15 +194,15 @@
   ```javascript
   // Good
   let asPureComponent = (Component) => {
-	    let componentName =
-	      Component.displayName || Component.name || "UnknownComponent";
-	    return class extends PureComponent {
-	      static displayName = `asPure(${componentName})`
-	
-	      render() {
-	        return <Component {...this.props} />
-	      }
-	    }
+    let componentName =
+        Component.displayName || Component.name || "UnknownComponent";
+    return class extends PureComponent {
+        static displayName = `asPure(${componentName})`
+
+        render() {
+        return <Component {...this.props} />
+        }
+    }
   }
   ```
 
@@ -299,13 +299,13 @@
 
   // Good
   class Message {
-	    render() {
-	      return (
-	        <div>
-	          <span>Hello World</span>
-	        </div>
-	      );
-	    }
+    render() {
+        return (
+        <div>
+            <span>Hello World</span>
+        </div>
+        );
+    }
   }
   ```
 
@@ -418,44 +418,44 @@
   ```javascript
   // Bad
   let List = ({ items }) => (
-	    <ul>
-	      {items.map((item) => (
-	        <li>
-	          <header>
-	            <h3>{item.title}</h3>
-	            <span>{item.subtitle}</span>
-	          </header>
-	          <section>{item.content}</section>
-	          <footer>
-	            <span>{item.author}</span>@<time>{item.postTime}</time>
-	          </footer>
-	        </li>
-	      ))}
-	    </ul>
+    <ul>
+        {items.map((item) => (
+        <li>
+            <header>
+            <h3>{item.title}</h3>
+            <span>{item.subtitle}</span>
+            </header>
+            <section>{item.content}</section>
+            <footer>
+            <span>{item.author}</span>@<time>{item.postTime}</time>
+            </footer>
+        </li>
+        ))}
+    </ul>
   );
 
   // Good
   let Header = ({ title, subtitle }) => (
-	    <header>
-	      <h3>{title}</h3>
-	      <span>{subtitle}</span>
-	    </header>
+    <header>
+        <h3>{title}</h3>
+        <span>{subtitle}</span>
+    </header>
   );
 
   let Content = ({ content }) => <section>{content}</section>;
 
   let Footer = ({ author, postTime }) => (
-	    <footer>
-	      <span>{author}</span>@<time>{postTime}</time>
-	    </footer>
+    <footer>
+        <span>{author}</span>@<time>{postTime}</time>
+    </footer>
   );
 
   let Item = (item) => (
-	    <div>
-	      <Header {...item} />
-	      <Content {...item} />
-	      <Footer {...item} />
-	    </div>
+    <div>
+        <Header {...item} />
+        <Content {...item} />
+        <Footer {...item} />
+    </div>
   );
 
   let List = ({ items }) => <ul>{items.map(Item)}</ul>;
