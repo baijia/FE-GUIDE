@@ -25,7 +25,7 @@
 -   [Vue 编码规范](https://cn.vuejs.org/v2/style-guide/)
 
 推荐使用 Prettier 插件 规范代码格式 并配置保存/粘贴自动格式化。
-不推荐 eslint，规范太严格，某些规范没必要。
+
 
 ![format](format.png)
 ![prettier](prettier.png)
